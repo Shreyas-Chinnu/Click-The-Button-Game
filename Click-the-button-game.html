@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click the Button Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        #game-area {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            border: 2px solid #333;
+            background-color: #fff;
+        }
+        #button {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+        #score {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="game-area">
+    <button id="button">Click!</button>
+</div>
+<div id="score">Score: 0</div>
+
+<script>
+    const button = document.getElementById("button");
+    const scoreDisplay = document.getElementById("score");
+    let score = 0;
+
+    // Move button to a random position within game area
+    function moveButton() {
+        const gameArea = document.getElementById("game-area");
+        const maxX = gameArea.clientWidth - button.clientWidth;
+        const maxY = gameArea.clientHeight - button.clientHeight;
+        
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+        
+        button.style.left = randomX + "px";
+        button.style.top = randomY + "px";
+    }
+
+    // Increase score when button is clicked
+    button.addEventListener("click", () => {
+        score++;
+        scoreDisplay.textContent = "Score: " + score;
+        moveButton();
+    });
+
+    // Initialize the button position
+    moveButton();
+</script>
+
+</body>
+</html>
