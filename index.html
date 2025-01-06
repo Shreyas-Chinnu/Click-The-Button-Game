@@ -40,40 +40,29 @@
     </style>
 </head>
 <body>
-
 <div id="game-area">
     <button id="button">Click!</button>
-</div>
+</div> <br>
 <div id="score">Score: 0</div>
-
 <script>
     const button = document.getElementById("button");
     const scoreDisplay = document.getElementById("score");
     let score = 0;
-
-    // Move button to a random position within game area
     function moveButton() {
         const gameArea = document.getElementById("game-area");
         const maxX = gameArea.clientWidth - button.clientWidth;
         const maxY = gameArea.clientHeight - button.clientHeight;
-        
         const randomX = Math.floor(Math.random() * maxX);
         const randomY = Math.floor(Math.random() * maxY);
-        
         button.style.left = randomX + "px";
         button.style.top = randomY + "px";
     }
-
-    // Increase score when button is clicked
     button.addEventListener("click", () => {
         score++;
         scoreDisplay.textContent = "Score: " + score;
         moveButton();
     });
-
-    // Initialize the button position
     moveButton();
 </script>
-
 </body>
 </html>
